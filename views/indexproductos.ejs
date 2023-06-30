@@ -1,0 +1,38 @@
+<!-- views/index.ejs -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>productos</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+
+</head>
+
+<body>
+    <h1>productos</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>precio</th>
+            <th>stock</th>
+            <th>Acciones</th>
+        </tr>
+        <% productos.forEach(producto=> { %>
+            <tr>
+                <td><%= producto.producto_id %></td>
+                <td><%= producto.nombre %></td>
+                <td><%= producto.precio %></td>
+                <td><%= producto.stock %></td>
+                <td>
+                    <a href="/editar/<%= producto.producto_id %>">Editar</a>
+                    <a href="/eliminar/<%= producto.producto_id %>">Eliminar</a>
+                </td>
+            </tr>
+            <% }) %>
+    </table>
+    <a href="/agregarproducto">Agregar producto</a>
+</body>
+
+</html>
