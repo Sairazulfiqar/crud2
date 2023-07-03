@@ -25,9 +25,10 @@
                 <td><%= producto.nombre %></td>
                 <td><%= producto.precio %></td>
                 <td><%= producto.stock %></td>
+
                 <td>
-                    <a href="/editar/<%= producto.producto_id %>">Editar</a>
-                    <a href="/eliminar/<%= producto.producto_id %>">Eliminar</a>
+                    <a href="/editarproducto/<%= producto.producto_id %>">Editar</a>
+                    <a href="/eliminarproducto/<%= producto.producto_id %>">Eliminar</a>
                 </td>
             </tr>
             <% }) %>
