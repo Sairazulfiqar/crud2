@@ -19,9 +19,9 @@
         </tr>
         <% fabricantes.forEach(fabricantes=> { %>
             <tr>
-                <td><%= fabricantes.fabricante_id %></td>
-                <td><%= fabricantes.nombre %></td>
-                <td><%= fabricantes.acciones %></td>
+                <td> <%= fabricantes.fabricante_id %></td>
+
+                <td> <a href="/listarprodfab/<%= fabricantes.fabricante_id%>/<%= fabricantes.nombre%>"> <%= fabricantes.nombre %> </a>  </td>
 
                 <td>
                     <a href="/editarfabricante/<%= fabricantes.fabricante_id %>">Editar</a>
@@ -34,3 +34,4 @@
 </body>
 
 </html>
+

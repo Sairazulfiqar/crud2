@@ -13,14 +13,47 @@ app.use(express.urlencoded({ extended: false }));
 // Obtener todos los productos
 app.get('/listaproductos', (req, res) => {
     db.query('SELECT * FROM productos', (error, results) => {
+        nombre = "";
         if (error) throw error;
-        res.render('indexproductos', { productos: results });
+        res.render('indexproductos', { nombre, productos: results });
     });
 });
 
 app.get('/', (req, res) => {
         res.render('home', (''));
     });
+
+// Obtener todos los productos por fabricante
+app.get('/listarprodfab/:id/:nombre', (req, res) => {
+    const id = req.params.id;
+    const nombre = req.params.nombre;
+    db.query('SELECT * FROM productos WHERE fabricante = ?', id, (error, results) => {
+        if (error) throw error;
+        res.render('indexproductos', { nombre, productos: results });
+    });
+});
+
+// Obtener todas las categorias por producto
+app.get('/listarprodcat/:id', (req, res) => {
+    const id = req.params.id;
+    db.query('SELECT * FROM productos WHERE categoria = ?', id, (error, results) => {
+        if (error) throw error;
+        nombre = "";
+        res.render('indexproductos', { nombre, productos: results });
+    });
+});
+
+app.get('/', (req, res) => {
+        res.render('home', (''));
+    });
+
+//Orden descendente
+app.get('/listaproductos', (req, res) => {
+    db.query('SELECT * FROM productos ORDER BY nombre DESC', (error, results) => {
+        if (error) throw error;
+        res.render('/listaproductos', { productos: results });
+    });
+});
 
 
 // Mostrar formulario para agregar un producto
